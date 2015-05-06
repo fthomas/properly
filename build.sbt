@@ -31,8 +31,8 @@ scalacOptions in (Compile, doc) ++= Seq(
 autoAPIMappings := true
 
 libraryDependencies ++= Seq(
-  "org.scalaz" %% "scalaz-core" % "7.1.1",
-  "org.scalaz" %% "scalaz-concurrent" % "7.1.1",
+  "org.scalaz" %% "scalaz-core" % "7.1.2",
+  "org.scalaz" %% "scalaz-concurrent" % "7.1.2",
   "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
 )
 
