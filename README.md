@@ -12,3 +12,9 @@ resolvers += "Frank's Bintray" at "https://dl.bintray.com/fthomas/maven"
 
 libraryDependencies += "eu.timepit" %% "properly" % "<version>"
 ```
+
+## License
+
+**properly** is licensed under the Apache License, Version 2.0,
+available at http://www.apache.org/licenses/LICENSE-2.0 and also in the
+[LICENSE](https://github.com/fthomas/properly/blob/master/LICENSE) file.
