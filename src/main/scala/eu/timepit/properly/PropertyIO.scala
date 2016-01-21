@@ -1,7 +1,6 @@
 package eu.timepit.properly
 
 import eu.timepit.properly.PropertyOp._
-
 import scala.util.Properties
 import scalaz._
 import scalaz.concurrent.Task

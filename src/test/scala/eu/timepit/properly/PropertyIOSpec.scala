@@ -2,9 +2,9 @@ package eu.timepit.properly
 
 import eu.timepit.properly.PropertyIO._
 import org.scalacheck.Prop._
-import org.scalacheck.Properties
+import scala.util.{ Properties, Random }
 
-class PropertyIOSpec extends Properties("PropertyIO") {
+class PropertyIOSpec extends org.scalacheck.Properties("PropertyIO") {
   val empty = Map.empty[String, String]
 
   property("clear") = secure {
@@ -37,5 +37,38 @@ class PropertyIOSpec extends Properties("PropertyIO") {
       .map(_.toInt)
 
     p.runMock(empty) == ((Map("one" -> "1"), 1))
+  }
+
+  property("clear IO") = secure {
+    val key = "properly.test"
+    val value = Random.nextString(8)
+
+    Properties.setProp(key, value)
+    PropertyIO.clear(key).runIO.unsafePerformIO()
+    !Properties.propIsSet(key)
+  }
+
+  property("get IO") = secure {
+    val key = "properly.test"
+    val value = Random.nextString(8)
+
+    Properties.setProp(key, value)
+    PropertyIO.get(key).runIO.unsafePerformIO().contains(value)
+  }
+
+  property("set IO") = secure {
+    val key = "properly.test"
+    val value = Random.nextString(8)
+
+    PropertyIO.set(key, value).runIO.unsafePerformIO()
+    Properties.propOrEmpty(key) == value
+  }
+
+  property("set Task") = secure {
+    val key = "properly.test"
+    val value = Random.nextString(8)
+
+    PropertyIO.set(key, value).runTask.run
+    Properties.propOrEmpty(key) == value
   }
 }
