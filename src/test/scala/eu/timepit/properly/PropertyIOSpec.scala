@@ -53,7 +53,7 @@ class PropertyIOSpec extends org.scalacheck.Properties("PropertyIO") {
     val value = Random.nextString(8)
 
     Properties.setProp(key, value)
-    PropertyIO.get(key).runIO.unsafePerformIO().contains(value)
+    PropertyIO.get(key).runIO.unsafePerformIO().getOrElse("") == value
   }
 
   property("set IO") = secure {
