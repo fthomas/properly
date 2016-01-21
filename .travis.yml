@@ -1,7 +1,12 @@
 language: scala
 scala:
- - 2.11.6
+- 2.10.6
+- 2.11.7
 jdk:
- - openjdk7
- - oraclejdk7
- - oraclejdk8
+- openjdk7
+- oraclejdk7
+- oraclejdk8
+script:
+- sbt ++$TRAVIS_SCALA_VERSION coverage test doc
+after_success:
+- bash <(curl -s https://codecov.io/bash)

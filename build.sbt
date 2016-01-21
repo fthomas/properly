@@ -6,7 +6,9 @@ organization := "eu.timepit"
 startYear := Some(2015)
 licenses += "GPL-3.0" -> url("http://www.gnu.org/licenses/gpl-3.0.html")
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
+crossScalaVersions := Seq("2.11.7", "2.10.6")
+
 scalacOptions ++= Seq(
   "-deprecation",
   "-encoding", "UTF-8",
@@ -31,9 +33,9 @@ scalacOptions in (Compile, doc) ++= Seq(
 autoAPIMappings := true
 
 libraryDependencies ++= Seq(
-  "org.scalaz" %% "scalaz-core" % "7.1.2",
-  "org.scalaz" %% "scalaz-concurrent" % "7.1.2",
-  "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
+  "org.scalaz" %% "scalaz-core" % "7.1.6",
+  "org.scalaz" %% "scalaz-concurrent" % "7.1.6",
+  "org.scalacheck" %% "scalacheck" % "1.12.5" % "test"
 )
 
 scmInfo := Some(ScmInfo(url("https://github.com/fthomas/properly"),
@@ -42,8 +44,6 @@ scmInfo := Some(ScmInfo(url("https://github.com/fthomas/properly"),
 initialCommands := """
   import eu.timepit.properly._
 """
-
-bintraySettings
 
 publishMavenStyle := true
 
