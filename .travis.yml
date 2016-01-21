@@ -6,6 +6,11 @@ jdk:
 - openjdk7
 - oraclejdk7
 - oraclejdk8
+sudo: false
+cache:
+  directories:
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt/boot/"
 script:
 - sbt ++$TRAVIS_SCALA_VERSION coverage test doc
 after_success:
