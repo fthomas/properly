@@ -16,6 +16,6 @@ cache:
   - "$HOME/.ivy2/cache"
   - "$HOME/.sbt/boot/"
 script:
-- sbt ++$TRAVIS_SCALA_VERSION coverage test doc
+- sbt ++$TRAVIS_SCALA_VERSION coverage test scalastyle test:scalastyle doc
 after_success:
 - bash <(curl -s https://codecov.io/bash)
