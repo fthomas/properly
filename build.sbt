@@ -4,7 +4,7 @@ name := "properly"
 
 organization := "eu.timepit"
 startYear := Some(2015)
-licenses += "GPL-3.0" -> url("http://www.gnu.org/licenses/gpl-3.0.html")
+licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
 
 scalaVersion := "2.11.7"
 crossScalaVersions := Seq("2.11.7", "2.10.6")
