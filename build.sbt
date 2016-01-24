@@ -48,6 +48,4 @@ initialCommands := """
 
 publishMavenStyle := true
 
-scalariformSettings
-
 git.useGitDescribe := true
