@@ -39,6 +39,16 @@ class PropertySpec extends org.scalacheck.Properties("Property") {
     p.runMock(empty) == ((Map("one" -> "1"), 1))
   }
 
+  property("getAsIntOrElse") = secure {
+    val m = Map("foo" -> "123", "bar" -> "1,5")
+    val p = for {
+      i1 <- Property.getAsIntOrElse("foo", 456)
+      i2 <- Property.getAsIntOrElse("bar", 789)
+    } yield (i1, i2)
+
+    p.runMock(m) == ((m, (123, 789)))
+  }
+
   property("getOrSet") = secure {
     val m = Map("foo" -> "bar")
     val p = for {
@@ -49,7 +59,7 @@ class PropertySpec extends org.scalacheck.Properties("Property") {
     p.runMock(m) == ((Map("foo" -> "bar", "fuu" -> "baz"), ("bar", "baz")))
   }
 
-  def testKeyValue = ("properly.test", Random.nextString(8))
+  def testKeyValue: (String, String) = ("properly.test", Random.nextString(8))
 
   property("clear IO") = secure {
     val (key, value) = testKeyValue

@@ -49,3 +49,12 @@ initialCommands := """
 publishMavenStyle := true
 
 git.useGitDescribe := true
+
+addCommandAlias("validate", Seq(
+  "clean",
+  "coverage",
+  "test",
+  "scalastyle",
+  "test:scalastyle",
+  "doc"
+).mkString(";", ";", ""))

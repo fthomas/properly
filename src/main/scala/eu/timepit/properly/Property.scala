@@ -1,5 +1,6 @@
 package eu.timepit.properly
 
+import scala.util.Try
 import scalaz.{ Free, Monad }
 import scalaz.concurrent.Task
 import scalaz.effect.IO
@@ -18,6 +19,9 @@ object Property {
     Free.liftFC(PropertyOp.Set(key, value))
 
   // derived operations
+
+  def getAsIntOrElse(key: String, defaultValue: Int): Property[Int] =
+    get(key).map(_.flatMap(s => Try(s.toInt).toOption).getOrElse(defaultValue))
 
   def getOrElse(key: String, defaultValue: String): Property[String] =
     get(key).map(_.getOrElse(defaultValue))
