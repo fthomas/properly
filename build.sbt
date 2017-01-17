@@ -29,7 +29,7 @@ scalacOptions in (Compile, doc) ++= Seq(
 
 autoAPIMappings := true
 
-val scalazVersion = "7.1.6"
+val scalazVersion = "7.2.8"
 val scalaCheckVersion = "1.13.4"
 
 libraryDependencies ++= Seq(
