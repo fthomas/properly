@@ -59,7 +59,8 @@ class PropertySpec extends org.scalacheck.Properties("Property") {
     p.runMock(m) == ((Map("foo" -> "bar", "fuu" -> "baz"), ("bar", "baz")))
   }
 
-  def testKeyValue: (String, String) = ("properly.test", Random.nextString(8))
+  def testKeyValue: (String, String) =
+    ("properly.test." + scala.math.abs(Random.nextInt), Random.nextString(8))
 
   property("clear IO") = secure {
     val (key, value) = testKeyValue
