@@ -3,5 +3,5 @@ package eu.timepit
 import scalaz.Free
 
 package object properly {
-  type Property[A] = Free[PropertyOp.FreeFunctor, A]
+  type Property[A] = Free[PropertyOp, A]
 }
