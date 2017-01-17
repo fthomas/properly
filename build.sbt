@@ -29,11 +29,14 @@ scalacOptions in (Compile, doc) ++= Seq(
 
 autoAPIMappings := true
 
+val scalazVersion = "7.1.6"
+val scalaCheckVersion = "1.13.4"
+
 libraryDependencies ++= Seq(
-  "org.scalaz" %% "scalaz-core" % "7.1.6",
-  "org.scalaz" %% "scalaz-concurrent" % "7.1.6",
-  "org.scalaz" %% "scalaz-effect" % "7.1.6",
-  "org.scalacheck" %% "scalacheck" % "1.12.5" % "test"
+  "org.scalaz" %% "scalaz-core" % scalazVersion,
+  "org.scalaz" %% "scalaz-concurrent" % scalazVersion,
+  "org.scalaz" %% "scalaz-effect" % scalazVersion,
+  "org.scalacheck" %% "scalacheck" % scalaCheckVersion % Test
 )
 
 scmInfo := Some(ScmInfo(url("https://github.com/fthomas/properly"),
