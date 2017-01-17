@@ -36,13 +36,13 @@ object Property {
 
   implicit class PropertySyntax[A](val self: Property[A]) extends AnyVal {
     def runIO: IO[A] =
-      Free.runFC(self)(PropertyOp.propertyOpToIO)
+      self.foldMap(PropertyOp.propertyOpToIO)
 
     def runTask: Task[A] =
       Task.delay(runIO.unsafePerformIO())
 
     def runMock(props: Map[String, String]): (Map[String, String], A) = {
-      val state = Free.runFC(self)(PropertyOp.propertyOpToMockState)
+      val state = self.foldMap(PropertyOp.propertyOpToMockState)
       state(props)
     }
   }
@@ -50,5 +50,5 @@ object Property {
   // instances
 
   implicit val propertyMonad: Monad[Property] =
-    Free.freeMonad[PropertyOp.FreeFunctor]
+    Free.freeMonad[PropertyOp]
 }
