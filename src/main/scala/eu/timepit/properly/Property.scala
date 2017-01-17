@@ -10,13 +10,13 @@ object Property {
   // constructors
 
   def clear(key: String): Property[Unit] =
-    Free.liftFC(PropertyOp.Clear(key))
+    Free.liftF(PropertyOp.Clear(key))
 
   def get(key: String): Property[Option[String]] =
-    Free.liftFC(PropertyOp.Get(key))
+    Free.liftF(PropertyOp.Get(key))
 
   def set(key: String, value: String): Property[Unit] =
-    Free.liftFC(PropertyOp.Set(key, value))
+    Free.liftF(PropertyOp.Set(key, value))
 
   // derived operations
 
