@@ -83,7 +83,7 @@ class PropertySpec extends org.scalacheck.Properties("Property") {
 
   property("set Task") = secure {
     val (key, value) = testKeyValue
-    Property.set(key, value).runTask.run
+    Property.set(key, value).runTask.unsafePerformSync
     Properties.propOrEmpty(key) == value
   }
 }
