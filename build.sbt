@@ -54,7 +54,10 @@ addCommandAlias("validate", Seq(
   "clean",
   "coverage",
   "test",
+  "coverageReport",
   "scalastyle",
   "test:scalastyle",
-  "doc"
+  "doc",
+  "packageSrc",
+  "package"
 ).mkString(";", ";", ""))
