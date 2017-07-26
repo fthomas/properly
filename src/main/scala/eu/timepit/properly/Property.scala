@@ -1,9 +1,8 @@
 package eu.timepit.properly
 
+import cats.effect.IO
+import cats.free.Free
 import scala.util.Try
-import scalaz.{ Free, Monad }
-import scalaz.concurrent.Task
-import scalaz.effect.IO
 
 object Property {
 
@@ -28,7 +27,7 @@ object Property {
 
   def getOrSet(key: String, value: String): Property[String] =
     get(key).flatMap {
-      case Some(v) => Free.point(v)
+      case Some(v) => Free.pure(v)
       case None => set(key, value).map(_ => value)
     }
 
@@ -38,17 +37,9 @@ object Property {
     def runIO: IO[A] =
       self.foldMap(PropertyOp.propertyOpToIO)
 
-    def runTask: Task[A] =
-      Task.delay(runIO.unsafePerformIO())
-
     def runMock(props: Map[String, String]): (Map[String, String], A) = {
       val state = self.foldMap(PropertyOp.propertyOpToMockState)
-      state(props)
+      state.run(props).value
     }
   }
-
-  // instances
-
-  implicit val propertyMonad: Monad[Property] =
-    Free.freeMonad[PropertyOp]
 }

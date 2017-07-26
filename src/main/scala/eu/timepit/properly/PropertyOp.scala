@@ -1,8 +1,9 @@
 package eu.timepit.properly
 
+import cats.data.State
+import cats.effect.IO
+import cats.~>
 import scala.util.Properties
-import scalaz.{ ~>, State }
-import scalaz.effect.IO
 
 sealed trait PropertyOp[A]
 
@@ -29,7 +30,7 @@ object PropertyOp {
       def apply[A](op: PropertyOp[A]): MockState[A] =
         op match {
           case Clear(key) => State.modify(_ - key)
-          case Get(key) => State.gets(_.get(key))
+          case Get(key) => State.inspect(_.get(key))
           case Set(key, value) => State.modify(_.updated(key, value))
         }
     }
