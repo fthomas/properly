@@ -1,6 +1,6 @@
 package eu.timepit
 
-import scalaz.Free
+import cats.free.Free
 
 package object properly {
   type Property[A] = Free[PropertyOp, A]

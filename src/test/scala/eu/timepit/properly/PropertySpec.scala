@@ -65,25 +65,19 @@ class PropertySpec extends org.scalacheck.Properties("Property") {
   property("clear IO") = secure {
     val (key, value) = testKeyValue
     Properties.setProp(key, value)
-    Property.clear(key).runIO.unsafePerformIO()
+    Property.clear(key).runIO.unsafeRunSync()
     !Properties.propIsSet(key)
   }
 
   property("get IO") = secure {
     val (key, value) = testKeyValue
     Properties.setProp(key, value)
-    Property.get(key).runIO.unsafePerformIO().getOrElse("") == value
+    Property.get(key).runIO.unsafeRunSync().getOrElse("") == value
   }
 
   property("set IO") = secure {
     val (key, value) = testKeyValue
-    Property.set(key, value).runIO.unsafePerformIO()
-    Properties.propOrEmpty(key) == value
-  }
-
-  property("set Task") = secure {
-    val (key, value) = testKeyValue
-    Property.set(key, value).runTask.unsafePerformSync
+    Property.set(key, value).runIO.unsafeRunSync()
     Properties.propOrEmpty(key) == value
   }
 }
