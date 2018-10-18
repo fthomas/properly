@@ -29,7 +29,7 @@ scalacOptions in (Compile, doc) ++= Seq(
 
 autoAPIMappings := true
 
-val catsFreeVersion = "0.9.0"
+val catsFreeVersion = "1.4.0"
 val catsEffectVersion = "1.0.0"
 val scalaCheckVersion = "1.14.0"
 
