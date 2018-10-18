@@ -29,13 +29,13 @@ scalacOptions in (Compile, doc) ++= Seq(
 
 autoAPIMappings := true
 
-val catsVersion = "0.9.0"
+val catsFreeVersion = "0.9.0"
 val catsEffectVersion = "0.10.1"
 val scalaCheckVersion = "1.14.0"
 
 libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-effect" % catsEffectVersion,
-  "org.typelevel" %% "cats-free" % catsVersion,
+  "org.typelevel" %% "cats-free" % catsFreeVersion,
   "org.scalacheck" %% "scalacheck" % scalaCheckVersion % Test
 )
 
