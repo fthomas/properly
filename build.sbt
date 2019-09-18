@@ -31,7 +31,7 @@ autoAPIMappings := true
 
 val catsFreeVersion = "2.0.0"
 val catsEffectVersion = "2.0.0"
-val scalaCheckVersion = "1.14.0"
+val scalaCheckVersion = "1.14.1"
 
 libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-effect" % catsEffectVersion,
