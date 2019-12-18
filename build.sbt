@@ -29,14 +29,10 @@ scalacOptions in (Compile, doc) ++= Seq(
 
 autoAPIMappings := true
 
-val catsFreeVersion = "2.0.0"
-val catsEffectVersion = "2.0.0"
-val scalaCheckVersion = "1.14.3"
-
 libraryDependencies ++= Seq(
-  "org.typelevel" %% "cats-effect" % catsEffectVersion,
-  "org.typelevel" %% "cats-free" % catsFreeVersion,
-  "org.scalacheck" %% "scalacheck" % scalaCheckVersion % Test
+  "org.typelevel" %% "cats-effect" % "2.0.0",
+  "org.typelevel" %% "cats-free" % "2.0.0",
+  "org.scalacheck" %% "scalacheck" % "1.14.3" % Test
 )
 
 scmInfo := Some(ScmInfo(url("https://github.com/fthomas/properly"),
