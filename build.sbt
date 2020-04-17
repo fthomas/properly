@@ -30,7 +30,7 @@ scalacOptions in (Compile, doc) ++= Seq(
 autoAPIMappings := true
 
 libraryDependencies ++= Seq(
-  "org.typelevel" %% "cats-effect" % "2.1.2",
+  "org.typelevel" %% "cats-effect" % "2.1.3",
   "org.typelevel" %% "cats-free" % "2.1.1",
   "org.scalacheck" %% "scalacheck" % "1.14.3" % Test
 )
