@@ -32,7 +32,7 @@ autoAPIMappings := true
 libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-effect" % "2.2.0",
   "org.typelevel" %% "cats-free" % "2.2.0",
-  "org.scalacheck" %% "scalacheck" % "1.15.0" % Test
+  "org.scalacheck" %% "scalacheck" % "1.15.1" % Test
 )
 
 scmInfo := Some(ScmInfo(url("https://github.com/fthomas/properly"),
