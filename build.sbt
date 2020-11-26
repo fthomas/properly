@@ -31,7 +31,7 @@ autoAPIMappings := true
 
 libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-effect" % "2.2.0",
-  "org.typelevel" %% "cats-free" % "2.2.0",
+  "org.typelevel" %% "cats-free" % "2.3.0",
   "org.scalacheck" %% "scalacheck" % "1.15.1" % Test
 )
 
